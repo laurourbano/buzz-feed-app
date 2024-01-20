@@ -1,0 +1,26 @@
+<div class="quizz__container">
+  <div class="quizz_logo">
+    <img src="assets\image\bf_logotipo.png" alt="logo" srcset="" />
+    <h3>{{ title }}</h3>
+  </div>
+
+  @if(!finished){
+  <div class="quizz_questions">
+    <h3>{{ questionSelected.question }}</h3>
+  </div>
+
+  <div class="quizz_options">
+    @for(option of questionSelected.options; track option.id){
+    <button (click)="playerChoose(option.alias)" class="btn-option">
+      {{ option.name }}
+    </button>
+    }
+  </div>
+  }@else{
+  <div class="quizz_results">
+    <h1>O seu resultado é:</h1>
+    <p [attr.class]="results">{{ answerSelected }}</p>
+    <button type="button" (click)="voltar()" class="btn-voltar">Voltar</button>
+  </div>
+  }
+</div>
